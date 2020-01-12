@@ -1,0 +1,23 @@
+{
+  "name": "index-download",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node build/index.js",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "puppeteer": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.6",
+    "@types/puppeteer": "^2.0.0",
+    "@types/dotenv": "^8.2.0",
+    "typescript": "^3.7.4"
+  }
+}
