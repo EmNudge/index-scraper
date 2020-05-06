@@ -9,7 +9,7 @@ async function getLinks(page: Page) {
   const links = (await page.$$("td a")).slice(1);
 
   // get promises for each link tag to retrieve name and link url
-  const linksData = links.map(linkTag => getLinkData(linkTag));
+  const linksData = links.map(getLinkData);
 
   return await Promise.all(linksData);
 }

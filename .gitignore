@@ -3,3 +3,4 @@ build/
 downloads
 screenshots
 .vscode
+.env

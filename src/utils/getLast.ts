@@ -5,11 +5,11 @@
 function getLast(text: string, separator: RegExp | string): string {
   const arr = text.split(separator)
 
-  let last = arr[arr.length - 1];
-  while (!last && arr.length) {
-    arr.length--;
+  let last: undefined | string;
+  do {
     last = arr[arr.length - 1];
-  }
+    if (arr.length) arr.length--;
+  } while (!last && arr.length);
 
   return last
 }

@@ -5,16 +5,16 @@ import joinPaths from '../utils/joinPaths'
 import getLinks from './getLinks'
 
 interface scrapeOptions {
-  name?: string;
   url: string;
   dir: string;
   browser: Browser;
+  isDir: boolean;
 }
 
 async function scrapeIndex(options: scrapeOptions) {
-  const { name = '', url, dir, browser } = options;
+  const { url, isDir, dir, browser } = options;
 
-  if (name.includes(".")) {
+  if (!isDir) {
     await downloadFile(url, dir);
     return;
   }
@@ -25,8 +25,13 @@ async function scrapeIndex(options: scrapeOptions) {
   await page.goto(url);
 
   const linksData = await getLinks(page);
-  const scrapes = linksData.map(({ name, link }) => {
-    return scrapeIndex({ name, url: link, dir: joinPaths(dir, name), browser });
+  const scrapes = linksData.map(({ name, link, isDir }) => {
+    return scrapeIndex({ 
+      url: link, 
+      isDir,
+      dir: joinPaths(dir, name), 
+      browser 
+    });
   });
 
   await Promise.all(scrapes);

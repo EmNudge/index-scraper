@@ -36,6 +36,7 @@ config({
   await scrapeIndex({
     dir: `downloads/${folderName}`,
     url: URL,
+    isDir: true,
     browser
   });
 
